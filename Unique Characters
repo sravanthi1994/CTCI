@@ -1,0 +1,30 @@
+// To determine if String has unique characters
+
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class UniqueChar {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a sentence");
+        String sentence = sc.next();
+        int flag = 0;
+        HashSet<Character> hs = new HashSet<Character>();
+        for(int i=0; i<sentence.length(); i++){
+            if(!hs.contains(sentence.charAt(i))){
+                hs.add(sentence.charAt(i));
+                flag = 1;
+            }
+            else{
+                flag =0;
+                break;
+            }
+        }
+        if(flag == 1){
+            System.out.println("There are only unique characters");
+        }
+        else{
+            System.out.println("There are duplicate characters");
+        }
+    }
+}
