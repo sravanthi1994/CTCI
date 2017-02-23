@@ -1,2 +1,2 @@
 # CTCI
-# I solve problems from Cracking the coding interview 
+I solve problems from Cracking the coding interview 
