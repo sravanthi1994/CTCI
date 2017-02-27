@@ -1,0 +1,44 @@
+//Check if two strings are one edit away. It means insertion, remove or replace of only one character
+
+O(m+n) complexity
+import java.util.HashMap;
+
+public class OneAway {
+    private int count=0;
+
+    public boolean Solution(String s1, String s2){
+        HashMap<Character,Integer> map = new HashMap<Character, Integer>();
+        for(int i=0; i < s1.length(); i++){
+            if(!map.containsKey(s1.charAt(i))){
+                map.put(s1.charAt(i),1);
+            }
+            else{
+                map.put(s1.charAt(i), map.get(s1.charAt(i))+1);
+            }
+        }
+        for(int j=0; j<s2.length();j++){
+            if(!map.containsKey(s2.charAt(j))){
+                map.put(s2.charAt(j),1);
+            }
+            else{
+                map.put(s2.charAt(j), map.get(s2.charAt(j))-1);
+            }
+        }
+        for(int k : map.values()){
+            if(k==1)count++;
+            else if(k==0)continue;
+            else return false;
+        }
+        if(count>2){
+            return false;
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args){
+        OneAway oa = new OneAway();
+        boolean result = oa.Solution("pale","bake");
+        System.out.println(result);
+    }
+}
