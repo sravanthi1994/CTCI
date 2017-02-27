@@ -33,3 +33,37 @@ public class PalinPermute {
         System.out.println(result);
     }
 }
+
+//Another approach... O(n) complexity
+import java.util.HashMap;
+
+public class PalinPermute {
+    private int count = 0;
+
+    public boolean Solution(String s){
+        char[] ch = new char[26];
+        for(int j=0;j<ch.length;j++){
+            ch[j] = 0;
+        }
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)>=65 && s.charAt(i)<=90){
+                ch[s.charAt(i)-65]++;
+            }
+            if(s.charAt(i)>=97 && s.charAt(i)<=122){
+                ch[s.charAt(i)-97]++;
+            }
+        }
+        for(int j=0;j<ch.length;j++){
+            if(ch[j]>2){return false;}
+            else if(ch[j]==1){count++;}
+        }
+        if(count>1)return false;
+        return true;
+    }
+    public static void main(String[] args){
+        PalinPermute pp = new PalinPermute();
+        boolean result = pp.Solution("tact doa");
+        System.out.println(result);
+    }
+}
+
