@@ -1,0 +1,35 @@
+// Given a string, check if it is a permutation of palindrome
+
+//Using Hasmap.... O(n) complexity
+import java.util.HashMap;
+
+public class PalinPermute {
+    public boolean Solution(String s){
+        String s1 = s.toLowerCase();
+        char[] ch1 = s1.toCharArray(); int count=0;
+
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        for(int i = 0;i<ch1.length; i++){
+            if(ch1[i] != ' '){
+
+                if(!map.containsKey(ch1[i])){
+                    map.put(ch1[i],1);
+                }
+                else{
+                    map.put(ch1[i], map.get(ch1[i])+1);
+                }
+            }
+        }
+        for(int j : map.values()){
+            if(j>2){return false;}
+            else if(j == 1){count++;}
+        }
+        if(count > 1){return false;}
+        return true;
+    }
+    public static void main(String[] args){
+        PalinPermute pp = new PalinPermute();
+        boolean result = pp.Solution("Tact coa");
+        System.out.println(result);
+    }
+}
