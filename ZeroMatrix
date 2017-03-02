@@ -1,0 +1,52 @@
+// if an element in matrix is 0, then its entire row and column are set to zero
+
+import java.util.ArrayList;
+
+public class ZeroMatrix {
+    public void Solution(int[][] matrix){
+        int m = matrix.length;int j1 =0 , i2 = 0;
+        int n = matrix[0].length;
+        ArrayList<Integer> row = new ArrayList<Integer>();
+        ArrayList<Integer> column = new ArrayList<Integer>();
+        for(int i = 0; i < m; i++){
+            for(int j=0; j < n; j++){
+                if(matrix[i][j] == 0){
+                    if(!row.contains(i)){
+                        row.add(i);
+                    }
+                    if(!column.contains(j)){
+                        column.add(j);
+                    }
+                }
+            }
+        }
+        for(int k=0; k < row.size(); k++){
+            while(j1 < n){
+                matrix[row.get(k)][j1] = 0;
+                j1++;
+            }
+            j1 = 0;
+        }
+        for(int k1 = 0; k1< column.size(); k1++){
+            while(i2 < m){
+                matrix[i2][column.get(k1)] = 0;
+                i2++;
+            }
+            i2 = 0;
+        }
+
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(matrix[i][j]+ " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args){
+        ZeroMatrix zm = new ZeroMatrix();
+        int[][] matrix = new int[][]{{1,1,0,1} , {0,1,1,1}, {1,1,1,1}};
+        zm.Solution(matrix);
+
+    }
+}
